@@ -161,14 +161,17 @@ class WildcardPlugin(TaggingPlugin):
         while i < len(group):
             node = group[i]
             if isinstance(node, self.WildcardNode):
+                incr_i = 0
                 if i < len(group) - 1 and group[i + 1].is_text():
                     nextnode = group.pop(i + 1)
                     node.text += nextnode.text
+                else:
+                    incr_i += 1
                 if i > 0 and group[i - 1].is_text():
                     prevnode = group.pop(i - 1)
                     node.text = prevnode.text + node.text
-                else:
-                    i += 1
+                    incr_i -= 1
+                i += incr_i
             else:
                 if isinstance(node, syntax.GroupNode):
                     self.do_wildcards(parser, node)
