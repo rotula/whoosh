@@ -28,7 +28,7 @@ class PyTest(TestCommand):
 if __name__ == "__main__":
     setup(
         name="Whoosh",
-        version=versionstring(),
+        version=versionstring()+"p1",
         package_dir={'': 'src'},
         packages=find_packages("src"),
 
