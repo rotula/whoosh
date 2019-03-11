@@ -610,6 +610,13 @@ def test_sequence_plugin():
     assert q[1][1].maxdist == 3
 
 
+def test_wildcard_plugin():
+    qp = default.QueryParser("f", None)
+    
+    q = qp.parse(u('br??o'))
+    assert q.text == "br??o"
+    assert q.__class__ == query.Wildcard
+
 def test_sequence_andmaybe():
     qp = default.QueryParser("f", None)
     qp.remove_plugin_class(plugins.PhrasePlugin)
