@@ -27,3 +27,4 @@ tmp/*
 tests/tmp/*
 
 .vscode/
+.pytest_cache/
